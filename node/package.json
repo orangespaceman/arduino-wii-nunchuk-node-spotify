@@ -1,0 +1,19 @@
+{
+  "name": "arduino-wii-nunchuk-node-spotify",
+  "version": "1.0.0",
+  "description": "Control Spotify using an Arduino and a Wii Nunchuk",
+  "main": "index.js",
+  "dependencies": {
+    "player": "^0.6.1",
+    "say": "^0.6.0",
+    "serialport": "^2.0.6",
+    "spotify-node-applescript": "andrehaveman/spotify-node-applescript#1.0.0-alpha-1",
+    "spotify-web-api-node": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
