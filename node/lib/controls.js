@@ -47,7 +47,7 @@ function processSerialData (data) {
 function play (x, y, z) {
   isActive = true;
   var ave = (parseInt(x, 10) + parseInt(y) + parseInt(z)) / 3;
-  var playlist = Math.round(ave * 0.2);
+  var playlist = Math.round(ave) % playlists.length;
 
   var selectedPlaylist = playlists[playlist];
   var firstTrackRequest = spotifyApi.getFirstTrack(selectedPlaylist);
@@ -56,14 +56,14 @@ function play (x, y, z) {
     toggle(true);
     playSound("./sfx/fanfare.mp3")
      .then(function () {
-       say.speak(config.say.voice, "You have chosen playlist " + playlist + ", " + selectedPlaylist.name, function () {
+        say.speak(config.say.voice, "You have chosen playlist " + playlist + ", " + selectedPlaylist.name, function () {
           isActive = false;
           spotify.playTrackInContext(firstTrack.uri, selectedPlaylist.uri);
           console.log("PLAYING:");
           console.log(selectedPlaylist.name);
           console.log(firstTrack.name);
           console.log("---");
-       });
+        });
      });
   });
 }
@@ -80,13 +80,16 @@ function sfx (dir) {
 // on toggle play/pause
 function toggle (dontPlay) {
   spotify.getState(function (err, state) {
-    if (state.state === "playing") {
+    if (err) {
+      console.log(err);
+    }
+    if (state && state.state === "playing") {
       spotify.pause();
       playSound("./sfx/scratch.mp3")
         .then(function () {
           isActive = false;
         });
-    } else if (state.state === "paused" && !dontPlay) {
+    } else if (state && state.state === "paused" && !dontPlay) {
       spotify.play();
     }
   });
