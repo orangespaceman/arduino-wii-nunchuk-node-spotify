@@ -2,7 +2,7 @@
 
 ## Post
 
- - [https://petegoodman.com/labs/arduino-wii-nunchuk-node-spotify/](https://petegoodman.com/labs/arduino-wii-nunchuk-node-spotify/)
+ - [https://f90.co.uk/labs/arduino-wii-nunchuk-node-spotify/](https://f90.co.uk/labs/arduino-wii-nunchuk-node-spotify/)
 
 ## Setup
 
